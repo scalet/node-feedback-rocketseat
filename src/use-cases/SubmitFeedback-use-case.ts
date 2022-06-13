@@ -35,12 +35,15 @@ export class SubmitFeedbackUseCase {
       screenshot}
     );
 
+    
+
     await this.mailAdapter.sendMail({
       subject: 'Novo feedabck MailAdapter',
       body: [
             `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
             `<p>Tipo do feedback: ${type}</p>`,
             `<p>Comentário: ${comment}</p>`,
+             `<p>Imagem:` + (screenshot ? `<img height="400" width="800" src="${screenshot}">` : `Nenhuma imagem enviada`) + `</p>`,
             `</div>`
           ].join('\n')
     });
